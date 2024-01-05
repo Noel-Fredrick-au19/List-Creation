@@ -1,25 +1,41 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import ListCreationView from './components/ListCreationView';
+import { useCreateListStore } from '../src/stores/CreateListStore';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
-function App() {
+
+const queryClient = new QueryClient();
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // <div className="align-center flex flex-col justify-center h-screen">
+    <>
+      <QueryClientProvider client={queryClient}>
+        {useCreateListStore.Provider}
+        <ListCreationView />
+        {useCreateListStore.Provider}
+      </QueryClientProvider>
+
+      <ToastContainer
+        limit={1}
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+    </>
+
   );
-}
+};
 
 export default App;
+
