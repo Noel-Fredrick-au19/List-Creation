@@ -1,0 +1,1 @@
+export { default as errorImage } from './list-creation-failure-lg-output.png';

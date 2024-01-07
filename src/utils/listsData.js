@@ -53,6 +53,7 @@ export const createNewList = (lists) => {
     return lists;
 };
 
+  
 export const updateListsData = (lists, newList) => {
     lists = { ...lists, ...newList };
     return lists;
